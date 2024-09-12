@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <style>
+        body {
+            font: 100% Lucida Sans, Verdana;
+            margin: 20px;
+            line-height: 26px;
+            background-color: honeydew;
+        }
+
+        input {
+            font-size: 20px;
+            padding: 10px;
+            margin: 10px;
+            width: 250px;
+            background-color: rgb(0, 0, 255, 0.1);
+            border-radius: 10px;
+
+        }
+
+        button {
+            font-size: 20px;
+            padding: 10px;
+            margin: 5px;
+            width: 100px;
+            border-radius: 10px;
+
+        }
+
+        #add {
+            background-color: rgb(0, 128, 0, 0.2);
+
+
+        }
+
+        #del {
+            background-color: rgb(255, 0, 0, 0.2);
+
+        }
+
+        ul li {
+            font-size: 25px;
+            padding: 10px;
+            background-color: rgb(255, 255, 0, 0.3);
+            margin-bottom: 10px;
+            margin-right: 250px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>이찬영's Web page(22100582)</h1>
+
+    <input type="text" id="inp" placeholder="input">
+    <button id="add">add</button>
+    <button id="del">del</button>
+    <ul id="lis">
+    </ul>
+
+    <script>
+        window.onload = function () {
+            let inp = document.getElementById('inp');
+            let add = document.getElementById('add');
+            let del = document.getElementById('del');
+            let lis = document.getElementById('lis');
+
+            add.onclick = function () {
+                let in2 = inp.value;
+                if (in2 !== "") {
+                    let li2 = document.createElement('li');
+                    li2.textContent = in2;
+                    lis.appendChild(li2);
+                    inp.value = "";
+                }
+            };
+
+            del.onclick = function () {
+                lis.innerHTML = "";
+            };
+        };
+    </script>
+
+</body>
+
+</html>

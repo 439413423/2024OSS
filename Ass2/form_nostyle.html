@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+</head>
+
+<body>
+    <form name="form1">
+
+
+        <div class="form_item user" id="divId">
+
+            <input type="text" id="id" name="id" placeholder="아이디" class="input" value="" maxlength="20"
+                autocapitalize="off"/><br>
+            <input type="checkbox" id="join_toggle" checked>
+            <label for="join_toggle">실명 인증된 아이디로 가입</label><br>
+        </div>
+
+        <div class="form_item lock password" id="divPasswd">
+            <input type="password" id="pswd1" name="pswd1" placeholder="비밀번호" class="input" value="" maxlength="20"
+                autocomplete="new-password" />
+        </div>
+
+        <div class="form_item_user" id="divName">
+            <input type="text" id="name" name="name" placeholder="이름" class="input" value="" maxlength="40" />
+        </div><br>
+
+        <div class="form_item calendar" id="divBirthday">
+            생년월일: <input type="date" class="from-date">
+        </div>
+
+
+
+        <div class="form_item adult" id="divIdentityGender">
+            <input type="radio" id="identityGender1" name="identityGender" value="M" checked class="blind">
+            <label for="identityGender1">남자</label>
+            <input type="radio" id="identityGender2" name="identityGender" value="F" class="blind">
+            <label for="identityGender2">여자</label><br><br>
+
+            <input type="radio" id="foreigner1" name="foreigner" value="K" checked class="blind">
+            <label for="foreigner1">내국인</label>
+            <input type="radio" id="foreigner2" name="foreigner" value="F" class="blind">
+            <label for="foreigner2">외국인</label>
+        </div>
+
+
+        <div class="select_box" id="selNationNo">
+            <select id="nationNo" name="nationNo" class="select">
+                <option value="220">
+                    감비아 +220
+                </option>
+                <option value="30">
+                    그리스 +30
+                </option>
+                <option value="27">
+                    남아프리카공화국 +27
+                </option>
+                <option value="64">
+                    뉴질랜드 +64
+                </option>
+                <option value="82" selected>
+                    대한민국 +82
+                </option>
+                <option value="1">
+                    미국/캐나다 +1
+                </option>
+                <option value="81">
+                    일본 +81
+                </option>
+                <option value="86">
+                    중국 +86
+                </option>
+            </select>
+        </div>
+
+
+
+        <div class="form_item phone" id="divPhoneNo">
+            <input type="tel" id="phoneNo" name="phoneNo" placeholder="휴대전화번호" class="input" value="" maxlength="16"/>
+        </div><br>
+
+
+        <div class="text_area">
+            <br>가입 경로 <br><br>
+            <textarea name="content" cols=40 rows=5>
+            </textarea> <br>
+        </div>
+
+        <div class="check_circle">
+            <input type="checkbox" id="agree_all" class="blind">
+            <label for="agree_all">
+                <em class="option point">[필수]</em>
+                <span class="text">인증 약관 전체동의</span>
+            </label>
+        </div><br>
+        <button class="btn" type="submit">Continue to checkout</button>
+
+    </form>
+</body>
+
+</html>
