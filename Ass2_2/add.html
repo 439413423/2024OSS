@@ -177,6 +177,13 @@
       }
     }
 
+    function con_yn() {
+      if (valform() == true) {
+        alert("게시물이 추가됩니다.");
+      }
+      return false;
+    }
+
     window.onload = function () {
       document.getElementById('agree_all').addEventListener('change', onc);
     };
