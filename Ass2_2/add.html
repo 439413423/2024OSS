@@ -20,7 +20,7 @@
 
 div {
   border-radius: 7px;
-  background-color: #f2f2f2;
+  
   padding: 20px;
   width: 700px;
   margin: 20px auto;
@@ -30,6 +30,7 @@ div {
 
 input[type=text],
 input[type=tel],
+input[type=date],
 input[type=password],
 select {
   padding: 12px 20px;
@@ -69,7 +70,13 @@ button[type=submit] {
 
 .form_item {
   margin-bottom: 20px;
-  text-align: left;
+
+  text-align: center;
+}
+
+input[type=radio] + label,
+input[type=checkbox] + label {
+  margin-right: 20px;
 }
 
 #home {
@@ -102,9 +109,9 @@ button[type=submit] {
       <div class="form_item_user" id="divName">
         <input type="text" id="name" name="name" placeholder="이름" class="input" value="" maxlength="40" />
       </div><br>
-
-      <div class="form_item calendar" id="divBirthday">
-        생년월일: <input type="date" class="from-date">
+     
+        <div class="form_item calendar" id="divBirthday">
+          생년월일 <input type="date" class="from-date">
       </div>
 
 
