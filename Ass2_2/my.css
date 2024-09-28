@@ -10,5 +10,8 @@
     button[type=submit] {
       width: 100%;
     }
+    body{
+    background-color:beige;
+    }
   }
   
