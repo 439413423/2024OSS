@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+      body {
+          font: 100% Lucida Sans, Verdana;
+          margin: 20px;
+          line-height: 26px;
+          background-color: azure;
+      }
+
+      input[type=text],
+      select,
+      input[type=tel],
+      input[type=password]{
+       
+          padding: 12px 20px;
+          width: 400px;
+          margin-bottom: 20px;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+      }
+
+      div {
+          border-radius: 7px;
+          background-color: #f2f2f2;
+          padding: 10px;
+          width: 700px;
+          margin: auto;
+          text-align: center;
+      }
+
+      .form_item_user {
+          padding-bottom: 20px;
+      }
+
+      button[type=submit] {
+
+          padding: 10px;
+          display: flex;
+          background-color: rgb(25, 206, 96);
+          margin: auto;
+          width: 400px;
+          height: 50px;
+          font-size: 25px;
+          border-radius: 7px;
+          color: white;
+          border: none;
+          justify-content: center;
+      }
+      #cancel{
+        background-color: transparent;
+        text-align: right;
+        margin-right:70px;
+      }
+  </style>
+</head>
+
+<body>
+    <div id="cancel">
+    <a href="./index.html" class="btn btn-warning" >취소</a>
+  </div>
+  <div class="container">
+    
+    <form name="form1" action="./index.html" onsubmit="return valform()">
+
+      <div class="form_item user" id="divId">
+
+        <input type="text" id="id" name="id" placeholder="아이디" class="input" value="" maxlength="20"
+          autocapitalize="off" /><br>
+      </div>
+
+      <div class="form_item lock password" id="divPasswd">
+        <input type="password" id="pswd1" name="pswd1" placeholder="비밀번호" class="input" value="" maxlength="20"
+          autocomplete="new-password" />
+      </div>
+
+      <div class="form_item_user" id="divName">
+        <input type="text" id="name" name="name" placeholder="이름" class="input" value="" maxlength="40" />
+      </div><br>
+
+      <div class="form_item calendar" id="divBirthday">
+        생년월일: <input type="date" class="from-date">
+      </div>
+
+
+
+      <div class="form_item adult" id="divIdentityGender">
+        <input type="radio" id="identityGender1" name="identityGender" value="M" checked class="blind">
+        <label for="identityGender1">남자</label>
+        <input type="radio" id="identityGender2" name="identityGender" value="F" class="blind">
+        <label for="identityGender2">여자</label><br><br>
+
+        <input type="radio" id="foreigner1" name="foreigner" value="K" checked class="blind">
+        <label for="foreigner1">내국인</label>
+        <input type="radio" id="foreigner2" name="foreigner" value="F" class="blind">
+        <label for="foreigner2">외국인</label>
+      </div>
+
+
+      <div class="select_box" id="selNationNo">
+        <select id="nationNo" name="nationNo" class="select">
+          <option value="220">
+            감비아 +220
+          </option>
+          <option value="30">
+            그리스 +30
+          </option>
+          <option value="27">
+            남아프리카공화국 +27
+          </option>
+          <option value="64">
+            뉴질랜드 +64
+          </option>
+          <option value="82" selected>
+            대한민국 +82
+          </option>
+          <option value="1">
+            미국/캐나다 +1
+          </option>
+          <option value="81">
+            일본 +81
+          </option>
+          <option value="86">
+            중국 +86
+          </option>
+        </select>
+      </div>
+
+      <div class="form_item phone" id="divPhoneNo">
+        <input type="tel" id="phoneNo" name="phoneNo" placeholder="휴대전화번호" class="input" value="" maxlength="16" />
+      </div><br>
+
+      <div class="check_circle">
+        <input type="checkbox" id="agree_all" class="blind">
+        <label for="agree_all">
+          <em class="option point">[필수]</em>
+          <span class="text" onclick="alert('약관 전문')" style="color:blue;">인증 약관 전체동의</span>
+        </label>
+      </div><br>
+
+      <script>
+        $("#create_book_cate").val("sports");
+      </script>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary" onclick="con_yn()">수정</button>
+  </form>
+    </form>
+
+  </div>
+  <script>
+    function listener_agreed() {
+      let checked = $("#create_book_agree").prop("checked");
+      if (checked) {
+        $("#create_book_agreed").val("1");
+      } else {
+        $("#create_book_agreed").val("0");
+      }
+    }
+
+    alert(localStorage.getItem("title"));
+
+    function con_yn() {
+      if (valform() == true) {
+        if (confirm("제출하시겠습니까?")) {
+          alert("제출 성공");
+        }
+      }
+    }
+    function onc() {
+      var agree = document.getElementById('agree_all').checked;
+      if (agree) {
+        alert("약관 동의가 완료되었습니다.");
+      }
+    }
+
+    window.onload = function () {
+      document.getElementById('agree_all').addEventListener('change', onc);
+    };
+
+    function valform() {
+      var id = document.getElementById('id').value;
+      var pswd1 = document.getElementById('pswd1').value;
+      var name = document.getElementById('name').value;
+      var phoneNo = document.getElementById('phoneNo').value;
+      var agree = document.getElementById('agree_all').checked;
+      var pat = /^[0-9]{10,16}$/;
+
+
+      if (id === "" || pswd1 === "" || name === "" || phoneNo === "") {
+        alert("id, pw, name, phoneNo를 모두 입력하세요.");
+        return false;
+      }
+
+
+      if (pswd1.length < 8) {
+        alert("비밀번호를 8자 이상 입력하세요.");
+        return false;
+      }
+
+
+      if (!pat.test(phoneNo)) {
+        alert("-없이 숫자로만 10~16자 사이로 입력해주세요.");
+        return false;
+      }
+
+      if (!agree) {
+        alert("약관에 동의해 주세요.");
+        return false;
+      }
+      return true;
+    }
+
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
