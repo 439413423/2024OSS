@@ -75,7 +75,7 @@
 
   <div class="container">
 
-    <form name="form1" action="./index.html" onsubmit="return con_yn()" >
+    <form name="form1" action="./index.html" onsubmit="return con_yn()">
 
       <div class="form_item user" id="divId">
 
@@ -172,13 +172,18 @@
       }
     }
 
-
     function con_yn() {
-      if (valform() == true) {
+
+      if (valform()) {
+
         if (confirm("게시물을 수정할까요?")) {
           alert("수정 성공");
+          return true;
+        } else {
+          return false;
         }
       }
+      return false;
     }
     function onc() {
       var agree = document.getElementById('agree_all').checked;
