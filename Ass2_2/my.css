@@ -1,33 +1,19 @@
-@media (max-width: 1000px) {
-    div {
-      width: 100%;
-    }
-    
-    input[type=text], select, input[type=tel], input[type=password] {
-      width: 100%;
-    }
-    
-    button[type=submit] {
-      width: 100%;
-    }
-    body{
-    background-color:lightgreen;
-    }
-  }
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     div {
       width: 90%; 
     }
-  
+
     input[type=text],
     input[type=tel],
     input[type=password],
     select {
       width: 100%; 
     }
-  
+
     button[type=submit] {
       width: 100%; 
     }
+    body {
+        background-color: lightgreen;
+      }
   }
-  
