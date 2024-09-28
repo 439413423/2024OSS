@@ -69,8 +69,8 @@
 
 <body>
     <div id="cancel">
-      <a href="./view.html" id="home" class="btn ">Home</a>
-  </div>
+      <a href="./index.html" id="home" class="btn ">Cancel</a>
+    </div>
   
   <div class="container">
     
@@ -155,7 +155,7 @@
       </script>
     </div>
     <br>
-    <button type="submit" class="btn btn-primary" onclick="con_yn()">수정</button>
+    <button type="submit" class="btn btn-primary" onclick="con_yn()">Edit</button>
   </form>
     </form>
 
@@ -173,8 +173,8 @@
 
     function con_yn() {
       if (valform() == true) {
-        if (confirm("제출하시겠습니까?")) {
-          alert("제출 성공");
+        if (confirm("게시물을 수정할까요?")) {
+          alert("수정 성공");
         }
       }
     }

@@ -71,7 +71,7 @@
 <body>
 
   <div id="cancel">
-    <a href="./view.html" id="home" class="btn ">Home</a>
+    <a href="./index.html" id="home" class="btn ">Cancel</a>
   </div>
   <div class="container">
     <form name="form1" action="complete.html" onsubmit="return valform()">
@@ -167,9 +167,7 @@
 
     function con_yn() {
       if (valform() == true) {
-        if (confirm("제출하시겠습니까?")) {
-          alert("제출 성공");
-        }
+          alert("게시물이 추가됩니다.");
       }
     }
     function onc() {
