@@ -81,7 +81,7 @@ ID: <input type="number" id="id" />
             }
         };
 
-        const newData = { id: Number(id), title, lastName, birthDate, gender, nationality };
+        const newData = { id: id, title, lastName, birthDate, gender, nationality };
         xhr.send(JSON.stringify(newData));
     }
 
@@ -110,7 +110,7 @@ ID: <input type="number" id="id" />
             }
         };
 
-        const updatedData = { id: Number(id), title, lastName, birthDate, gender, nationality };
+        const updatedData = { title, lastName, birthDate, gender, nationality };
         xhr.send(JSON.stringify(updatedData));
     }
 
