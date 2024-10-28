@@ -1,6 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX CRUD</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<h1>회원 관리</h1>
+
+<button onclick="getData()">회원 목록</button>
+<br><br>
+ID: <input type="number" id="id" />
+이름: <input type="text" id="title" /><br>
+성: <input type="text" id="lastName" /><br>
+생년월일: <input type="date" id="birthDate" /><br>
+성별: <select id="gender">
+        <option value="남">남</option>
+        <option value="여">여</option>
+      </select><br>
+국적: <select id="nationality">
+        <option value="내국인">내국인</option>
+        <option value="외국인">외국인</option>
+      </select><br>
+<br>
+<button onclick="createData()">데이터 추가</button>
+<button onclick="updateData()">데이터 수정</button>
+<button onclick="deleteData()">데이터 삭제</button>
+<br><br>
+
+<div id="data-list">
+    <h2>회원 목록</h2>
+</div>
+
 <script>
-    // 서버에서 받은 데이터를 저장할 배열 (ID 추적용)
-    let users = [];
+    let storedData = []; // 서버에서 받은 데이터를 저장하는 배열
 
     function getData() {
         const xhr = new XMLHttpRequest();
@@ -8,10 +44,10 @@
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onload = function() {
             if (xhr.status === 200) {
-                users = JSON.parse(xhr.responseText); // 서버에서 데이터를 받아 배열에 저장
+                storedData = JSON.parse(xhr.responseText); // 서버에서 받은 데이터를 저장
                 const dataList = document.getElementById("data-list");
                 dataList.innerHTML = "<h2>회원 목록</h2>";
-                users.forEach(person => {
+                storedData.forEach(person => {
                     dataList.innerHTML += `<div>ID: ${person.id}, 이름: ${person.title}, 성: ${person.lastName}, 생년월일: ${person.birthDate}, 성별: ${person.gender}, 국적: ${person.nationality}</div>`;
                 });
             } else {
@@ -58,13 +94,8 @@
         const gender = document.getElementById("gender").value;
         const nationality = document.getElementById("nationality").value;
 
-        if (isNaN(id)) {
-            alert("ID는 숫자로 입력해야 합니다.");
-            return;
-        }
-
-        // 사용자가 입력한 ID가 실제 데이터의 ID와 일치하는지 확인
-        const user = users.find(u => u.id === id);
+        // 서버에서 추가된 ID를 검색하여 사용
+        const user = storedData.find(u => u.id === id || u.id === id.toString());
         if (!user) {
             alert("ID에 해당하는 데이터를 찾을 수 없습니다.");
             return;
@@ -88,12 +119,9 @@
 
     function deleteData() {
         const id = parseInt(document.getElementById("id").value, 10);
-        if (isNaN(id)) {
-            alert("ID는 숫자로 입력해야 합니다.");
-            return;
-        }
 
-        const user = users.find(u => u.id === id);
+        // 서버에서 추가된 ID를 검색하여 사용
+        const user = storedData.find(u => u.id === id || u.id === id.toString());
         if (!user) {
             alert("ID에 해당하는 데이터를 찾을 수 없습니다.");
             return;
@@ -113,3 +141,6 @@
         xhr.send();
     }
 </script>
+
+</body>
+</html>
