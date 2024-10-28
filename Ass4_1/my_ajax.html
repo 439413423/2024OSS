@@ -57,7 +57,7 @@ ID: <input type="number" id="id" />
     }
 
     function createData() {
-        const id = document.getElementById("id").value;
+        const id = parseInt(document.getElementById("id").value, 10);
         const title = document.getElementById("title").value;
         const lastName = document.getElementById("lastName").value;
         const birthDate = document.getElementById("birthDate").value;
@@ -86,7 +86,7 @@ ID: <input type="number" id="id" />
     }
 
     function updateData() {
-        const id = document.getElementById("id").value;
+        const id = parseInt(document.getElementById("id").value, 10);
         const title = document.getElementById("title").value;
         const lastName = document.getElementById("lastName").value;
         const birthDate = document.getElementById("birthDate").value;
@@ -115,7 +115,7 @@ ID: <input type="number" id="id" />
     }
 
     function deleteData() {
-        const id = document.getElementById("id").value;
+        const id = parseInt(document.getElementById("id").value, 10);
         if (!id || isNaN(id)) {
             alert("ID 숫자로 입력하기");
             return;
