@@ -13,7 +13,7 @@
 
 <button onclick="getData()">회원 목록</button>
 <br><br>
-ID: <input type="number" id="id" />
+ID: <input type="text" id="id" /> 
 이름: <input type="text" id="title" /><br>
 성: <input type="text" id="lastName" /><br>
 생년월일: <input type="date" id="birthDate" /><br>
@@ -36,18 +36,16 @@ ID: <input type="number" id="id" />
 </div>
 
 <script>
-    let storedData = []; // 서버에서 받은 데이터를 저장하는 배열
-
     function getData() {
         const xhr = new XMLHttpRequest();
         xhr.open("GET", "http://localhost:3000/users", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onload = function() {
             if (xhr.status === 200) {
-                storedData = JSON.parse(xhr.responseText); // 서버에서 받은 데이터를 저장
+                const data = JSON.parse(xhr.responseText);
                 const dataList = document.getElementById("data-list");
                 dataList.innerHTML = "<h2>회원 목록</h2>";
-                storedData.forEach(person => {
+                data.forEach(person => {
                     dataList.innerHTML += `<div>ID: ${person.id}, 이름: ${person.title}, 성: ${person.lastName}, 생년월일: ${person.birthDate}, 성별: ${person.gender}, 국적: ${person.nationality}</div>`;
                 });
             } else {
@@ -58,15 +56,15 @@ ID: <input type="number" id="id" />
     }
 
     function createData() {
-        const id = parseInt(document.getElementById("id").value, 10);
+        const id = document.getElementById("id").value; 
         const title = document.getElementById("title").value;
         const lastName = document.getElementById("lastName").value;
         const birthDate = document.getElementById("birthDate").value;
         const gender = document.getElementById("gender").value;
         const nationality = document.getElementById("nationality").value;
 
-        if (isNaN(id)) {
-            alert("ID는 숫자로 입력해야 합니다.");
+        if (!id) {
+            alert("ID를 입력해야 합니다.");
             return;
         }
 
@@ -76,7 +74,7 @@ ID: <input type="number" id="id" />
         xhr.onload = function() {
             if (xhr.status === 201) {
                 alert("추가 성공");
-                getData(); // 데이터 추가 후, 다시 데이터를 가져와서 ID를 업데이트
+                getData();
             } else {
                 alert("추가 실패");
             }
@@ -87,22 +85,20 @@ ID: <input type="number" id="id" />
     }
 
     function updateData() {
-        const id = parseInt(document.getElementById("id").value, 10);
+        const id = document.getElementById("id").value; 
         const title = document.getElementById("title").value;
         const lastName = document.getElementById("lastName").value;
         const birthDate = document.getElementById("birthDate").value;
         const gender = document.getElementById("gender").value;
         const nationality = document.getElementById("nationality").value;
 
-        // 서버에서 추가된 ID를 검색하여 사용
-        const user = storedData.find(u => u.id === id || u.id === id.toString());
-        if (!user) {
-            alert("ID에 해당하는 데이터를 찾을 수 없습니다.");
+        if (!id) {
+            alert("ID를 입력해야 합니다.");
             return;
         }
 
         const xhr = new XMLHttpRequest();
-        xhr.open("PUT", `http://localhost:3000/users/${user.id}`, true);
+        xhr.open("PUT", `http://localhost:3000/users/${id}`, true);
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         xhr.onload = function() {
             if (xhr.status === 200) {
@@ -113,22 +109,18 @@ ID: <input type="number" id="id" />
             }
         };
 
-        const updatedData = { title, lastName, birthDate, gender, nationality };
+        const updatedData = { id: id, title, lastName, birthDate, gender, nationality };
         xhr.send(JSON.stringify(updatedData));
     }
 
     function deleteData() {
-        const id = parseInt(document.getElementById("id").value, 10);
-
-        // 서버에서 추가된 ID를 검색하여 사용
-        const user = storedData.find(u => u.id === id || u.id === id.toString());
-        if (!user) {
-            alert("ID에 해당하는 데이터를 찾을 수 없습니다.");
+        const id = document.getElementById("id").value; 
+        if (!id) {
+            alert("ID를 입력해야 합니다.");
             return;
         }
-
         const xhr = new XMLHttpRequest();
-        xhr.open("DELETE", `http://localhost:3000/users/${user.id}`, true);
+        xhr.open("DELETE", `http://localhost:3000/users/${id}`, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onload = function() {
             if (xhr.status === 200) {

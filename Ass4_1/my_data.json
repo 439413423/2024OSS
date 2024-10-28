@@ -18,11 +18,11 @@
     },
     {
       "id": "3",
-      "title": "",
-      "lastName": "",
-      "birthDate": "",
+      "title": "ccc",
+      "lastName": "Jhon",
+      "birthDate": "2004-02-28",
       "gender": "남",
-      "nationality": "내국인"
+      "nationality": "외국인"
     },
     {
       "id": "4",
@@ -78,14 +78,6 @@
       "lastName": "Hawn",
       "birthDate": "1992-08-09",
       "gender": "여",
-      "nationality": "내국인"
-    },
-    {
-      "id": 11,
-      "title": "",
-      "lastName": "",
-      "birthDate": "",
-      "gender": "남",
       "nationality": "내국인"
     }
   ]
