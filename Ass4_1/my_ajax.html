@@ -62,9 +62,9 @@ ID: <input type="number" id="id" />
         const birthDate = document.getElementById("birthDate").value;
         const gender = document.getElementById("gender").value;
         const nationality = document.getElementById("nationality").value;
-        
+
         if (isNaN(id)) {
-            alert("ID는 숫자로 입력");
+            alert("ID는 숫자로 입력해야 합니다.");
             return;
         }
 
@@ -80,7 +80,7 @@ ID: <input type="number" id="id" />
             }
         };
 
-        // 명시적으로 숫자형 ID를 포함한 데이터로 전송합니다.
+        // 숫자형 ID를 명시적으로 설정
         const newData = { id: id, title, lastName, birthDate, gender, nationality };
         xhr.send(JSON.stringify(newData));
     }
@@ -94,7 +94,7 @@ ID: <input type="number" id="id" />
         const nationality = document.getElementById("nationality").value;
 
         if (isNaN(id)) {
-            alert("ID는 숫자로 입력");
+            alert("ID는 숫자로 입력해야 합니다.");
             return;
         }
 
@@ -117,7 +117,7 @@ ID: <input type="number" id="id" />
     function deleteData() {
         const id = parseInt(document.getElementById("id").value, 10);
         if (isNaN(id)) {
-            alert("ID는 숫자로 입력");
+            alert("ID는 숫자로 입력해야 합니다.");
             return;
         }
         const xhr = new XMLHttpRequest();
