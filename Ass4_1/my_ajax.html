@@ -64,7 +64,7 @@ ID: <input type="number" id="id" />
         const gender = document.getElementById("gender").value;
         const nationality = document.getElementById("nationality").value;
         
-        if (!id || isNaN(id)) {
+        if (isNaN(id)) {
             alert("ID 숫자로 입력하기");
             return;
         }
@@ -93,7 +93,7 @@ ID: <input type="number" id="id" />
         const gender = document.getElementById("gender").value;
         const nationality = document.getElementById("nationality").value;
 
-        if (!id || isNaN(id)) {
+        if (isNaN(id)) {
             alert("ID 숫자로 입력하기");
             return;
         }
@@ -110,13 +110,14 @@ ID: <input type="number" id="id" />
             }
         };
 
+        // 'id' 필드를 제외하여 데이터 업데이트 요청
         const updatedData = { title, lastName, birthDate, gender, nationality };
         xhr.send(JSON.stringify(updatedData));
     }
 
     function deleteData() {
         const id = parseInt(document.getElementById("id").value, 10);
-        if (!id || isNaN(id)) {
+        if (isNaN(id)) {
             alert("ID 숫자로 입력하기");
             return;
         }
