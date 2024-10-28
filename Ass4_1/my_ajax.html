@@ -44,7 +44,7 @@ ID: <input type="text" id="id" />
             if (xhr.status === 200) {
                 const data = JSON.parse(xhr.responseText);
                 const dataList = document.getElementById("data-list");
-                dataList.innerHTML = "<h2>회원 목록</h2>";
+                dataList.innerHTML = "<h2>회원 목록 로드</h2>";
                 data.forEach(person => {
                     dataList.innerHTML += `<div>ID: ${person.id}, 이름: ${person.title}, 성: ${person.lastName}, 생년월일: ${person.birthDate}, 성별: ${person.gender}, 국적: ${person.nationality}</div>`;
                 });
