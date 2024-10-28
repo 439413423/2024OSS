@@ -45,7 +45,7 @@ ID: <input type="number" id="id" />
             if (xhr.status === 200) {
                 const data = JSON.parse(xhr.responseText);
                 const dataList = document.getElementById("data-list");
-                dataList.innerHTML = "<h2>회원 목록 로드</h2>";
+                dataList.innerHTML = "<h2>회원 목록</h2>";
                 data.forEach(person => {
                     dataList.innerHTML += `<div>ID: ${person.id}, 이름: ${person.title}, 성: ${person.lastName}, 생년월일: ${person.birthDate}, 성별: ${person.gender}, 국적: ${person.nationality}</div>`;
                 });
@@ -57,34 +57,33 @@ ID: <input type="number" id="id" />
     }
 
     function createData() {
-    const id = document.getElementById("id").value; 
-    const title = document.getElementById("title").value;
-    const lastName = document.getElementById("lastName").value;
-    const birthDate = document.getElementById("birthDate").value;
-    const gender = document.getElementById("gender").value;
-    const nationality = document.getElementById("nationality").value;
-    
-    if (!id) {
-        alert("추가할  데이터의 ID 입력");
-        return;
-    }
-
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost:3000/users", true);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.onload = function() {
-        if (xhr.status === 201) {
-            alert("추가 성공");
-            getData();
-        } else {
-            alert("추가 실패");
+        const id = document.getElementById("id").value;
+        const title = document.getElementById("title").value;
+        const lastName = document.getElementById("lastName").value;
+        const birthDate = document.getElementById("birthDate").value;
+        const gender = document.getElementById("gender").value;
+        const nationality = document.getElementById("nationality").value;
+        
+        if (!id || isNaN(id)) {
+            alert("ID 숫자로 입력하기");
+            return;
         }
-    };
-    
-    const newData = { id: parseInt(id), title, lastName, birthDate, gender, nationality };
-    xhr.send(JSON.stringify(newData));
-}
 
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:3000/users", true);
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.onload = function() {
+            if (xhr.status === 201) {
+                alert("추가 성공");
+                getData();
+            } else {
+                alert("추가 실패");
+            }
+        };
+
+        const newData = { id: Number(id), title, lastName, birthDate, gender, nationality };
+        xhr.send(JSON.stringify(newData));
+    }
 
     function updateData() {
         const id = document.getElementById("id").value;
@@ -93,10 +92,12 @@ ID: <input type="number" id="id" />
         const birthDate = document.getElementById("birthDate").value;
         const gender = document.getElementById("gender").value;
         const nationality = document.getElementById("nationality").value;
-        if (!id) {
-            alert("수정할 데이터의 ID 입력");
+
+        if (!id || isNaN(id)) {
+            alert("ID 숫자로 입력하기");
             return;
         }
+
         const xhr = new XMLHttpRequest();
         xhr.open("PUT", `http://localhost:3000/users/${id}`, true);
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -108,14 +109,15 @@ ID: <input type="number" id="id" />
                 alert("수정 실패");
             }
         };
-        const updatedData = { title, lastName, birthDate, gender, nationality };
+
+        const updatedData = { id: Number(id), title, lastName, birthDate, gender, nationality };
         xhr.send(JSON.stringify(updatedData));
     }
 
     function deleteData() {
         const id = document.getElementById("id").value;
-        if (!id) {
-            alert("삭제할 데이터의 ID 입력");
+        if (!id || isNaN(id)) {
+            alert("ID 숫자로 입력하기");
             return;
         }
         const xhr = new XMLHttpRequest();
