@@ -51,6 +51,7 @@ ID: <input type="number" id="id" />
                 });
             } else {
                 alert("데이터 로드 실패");
+                console.error(`Error ${xhr.status}: ${xhr.statusText}`);
             }
         };
         xhr.send();
@@ -65,7 +66,7 @@ ID: <input type="number" id="id" />
         const nationality = document.getElementById("nationality").value;
         
         if (isNaN(id)) {
-            alert("ID 숫자로 입력하기");
+            alert("ID는 숫자로 입력해야 합니다.");
             return;
         }
 
@@ -78,6 +79,7 @@ ID: <input type="number" id="id" />
                 getData();
             } else {
                 alert("추가 실패");
+                console.error(`Error ${xhr.status}: ${xhr.statusText}`);
             }
         };
 
@@ -94,7 +96,7 @@ ID: <input type="number" id="id" />
         const nationality = document.getElementById("nationality").value;
 
         if (isNaN(id)) {
-            alert("ID 숫자로 입력하기");
+            alert("ID는 숫자로 입력해야 합니다.");
             return;
         }
 
@@ -107,10 +109,10 @@ ID: <input type="number" id="id" />
                 getData();
             } else {
                 alert("수정 실패");
+                console.error(`Error ${xhr.status}: ${xhr.statusText}`);
             }
         };
 
-        // 'id' 필드를 제외하여 데이터 업데이트 요청
         const updatedData = { title, lastName, birthDate, gender, nationality };
         xhr.send(JSON.stringify(updatedData));
     }
@@ -118,7 +120,7 @@ ID: <input type="number" id="id" />
     function deleteData() {
         const id = parseInt(document.getElementById("id").value, 10);
         if (isNaN(id)) {
-            alert("ID 숫자로 입력하기");
+            alert("ID는 숫자로 입력해야 합니다.");
             return;
         }
         const xhr = new XMLHttpRequest();
@@ -130,6 +132,7 @@ ID: <input type="number" id="id" />
                 getData();
             } else {
                 alert("삭제 실패");
+                console.error(`Error ${xhr.status}: ${xhr.statusText}`);
             }
         };
         xhr.send();
